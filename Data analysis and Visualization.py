@@ -122,8 +122,8 @@ ax.set_title("All Transactions of Top 10 Customers Distribution")
 max_customer = df.loc[df["Transaction Sum"].idxmax()]
 
 # Print the customer with the highest transaction amount
-print(f"The sum of all transactions for the top 10 customers is ${df['Transaction Sum'].sum():.2f}.") 
-print(f"The customer with the highest transaction amount is {max_customer['First Name']} {max_customer['Last Name']} with a transaction sum of ${max_customer['Transaction Sum']:.2f}.")
+print(f"The sum of all transactions for the top 10 customers is ${df['Transaction Sum'].sum():,.2f}.")
+print(f"The customer with the highest transaction amount is {max_customer['First Name']} {max_customer['Last Name']} with a transaction sum of ${max_customer['Transaction Sum']:,.2f}, which is {max_customer['Transaction Sum'] / df['Transaction Sum'].sum() * 100:.1f}% of the total transactions of the top 10 customers.")
 
 # Show the plot
 plt.show()

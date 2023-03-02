@@ -80,7 +80,7 @@ else:
     print(table)
 
     # Get user input for which field to modify and new value
-    field_to_modify = input("Which field would you like to modify? Type in the field name shown in the table below, CUST_CITY for example: ")
+    field_to_modify = input("Which field would you like to modify? Type in the field name shown in the table above, CUST_CITY for example: ")
     new_value = input(f"What is the new value for {field_to_modify}? ")
 
     # Update database with new value
@@ -149,7 +149,7 @@ if len(result) == 0:
 else:
     column_names = [i[0] for i in mycursor.description]
     table = PrettyTable()
-    table.field_names = ["Transaction Data", "Transaction ID", "Transaction Type", "Transaction Value"]
+    table.field_names = ["Transaction Data", "Transaction ID", "Transaction Type", "Transaction Value ($)"]
     total_value = 0
     for row in result:
         table.add_row([row[column_names.index('TIMEID')],
@@ -157,9 +157,11 @@ else:
                        row[column_names.index('TRANSACTION_TYPE')],
                        row[column_names.index('TRANSACTION_VALUE')]])
         total_value += row[column_names.index('TRANSACTION_VALUE')]
-    print(f"Monthly bill for credit card number {creditcardno} in {month}/{year} is ${total_value}.")
-    print(f"Here is the table showing all transactions in in {month}/{year}:")
     print(table)
+    print(f"Table above is showing all transactions in {month}/{year} for credit card number {creditcardno}.")
+    print(f"As a result, its monthly bill is ${total_value:,.2f}.")
+
+    
     
 # Close database connection
 mydb.close()
@@ -204,15 +206,15 @@ if len(result) == 0:
 else:
     column_names = [i[0] for i in mycursor.description]
     table = PrettyTable()
-    table.field_names = ["Transaction Date", "Transaction ID", "Transaction Type", "Transaction Value"]
+    table.field_names = ["Transaction Date", "Transaction ID", "Transaction Type", "Transaction Value ($)"]
     for row in result:
         table.add_row([row[column_names.index('TIMEID')],
                        row[column_names.index('TRANSACTION_ID')],
                        row[column_names.index('TRANSACTION_TYPE')],
                        row[column_names.index('TRANSACTION_VALUE')]])
-    print(f"Transactions for {firstname} {lastname} with email addresss {email} between {start_date} and {end_date}:")
     print(table)
-
+    print(f"Table above is showing all transactions for {firstname} {lastname} with email addresss {email} between {start_date} and {end_date}.")
+    
 # Close database connection
 mydb.close()
 

@@ -33,7 +33,7 @@ if len(result) == 0:
 else:
     column_names = [i[0] for i in mycursor.description]
     table = PrettyTable()
-    table.field_names = ["Transaction Date", "Transaction ID", "Transaction Type", "Transaction Value", "Customer First Name", "Customer Last Name"]
+    table.field_names = ["Transaction Date", "Transaction ID", "Transaction Type", "Transaction Value ($)", "Customer First Name", "Customer Last Name"]
     for row in result:
         table.add_row([row[column_names.index('TIMEID')],
                        row[column_names.index('TRANSACTION_ID')], 
@@ -41,8 +41,8 @@ else:
                        row[column_names.index('TRANSACTION_VALUE')], 
                        row[column_names.index('FIRST_NAME')],
                        row[column_names.index('LAST_NAME')]])
-    print(f"Here is the table of transactions made by customers living in zip code of {zip_code} in {month}/{year} in ascending day order:")
-    print(table)
+    print(table)    
+    print(f"Table above is showing all transactions made by customers living in zip code of {zip_code} in {month}/{year} in ascending day order:")
 
 # Close database connection
 mydb.close()
@@ -54,7 +54,7 @@ import mysql.connector
 from prettytable import PrettyTable
 
 # Connect to MariaDB
-mydb1 = mysql.connector.connect(
+mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="password",
@@ -65,35 +65,36 @@ mydb1 = mysql.connector.connect(
 transaction_type = input("Enter a transaction type from bills, education, grocery, healthcare, entertainment, gas, and test: ")
 
 # Query database
-mycursor1 = mydb1.cursor()
+mycursor = mydb.cursor()
 query = f'''
         SELECT TRANSACTION_ID, TRANSACTION_VALUE 
         FROM cdw_sapp_credit_card 
         WHERE TRANSACTION_TYPE = '{transaction_type}'
     '''
-mycursor1.execute(query)
-result1 = mycursor1.fetchall()
+mycursor.execute(query)
+result = mycursor.fetchall()
 
 # Create a table to display the results
-table1 = PrettyTable()
-table1.field_names = ["Transaction ID", "Transaction Value"]
+table = PrettyTable()
+table1field_names = ["Transaction ID", "Transaction Value ($)"]
 
 # Iterate through the results to calculate the number and total value of transactions
 total_value = 0
 num_transactions = 0
-for row in result1:
+for row in result:
     transaction_id = row[0]
     transaction_value = row[1]
     total_value += transaction_value
     num_transactions += 1
     
     # Add row to table
-    table1.add_row([transaction_id, transaction_value])
+    table.add_row([transaction_id, transaction_value])
 
 # Display the results
-print(f"Number of {transaction_type} type of transactions: {num_transactions:,}")
-print(f"Total value of {transaction_type} type of transactions: {total_value:,.2f}")
-print(f"Here is the table of {transaction_type} type of transactions: \n{table1}")
+print(table)
+print(f"Table above is showing all {transaction_type} type of transactions.")
+print(f"Total number of {transaction_type} type of transactions is {num_transactions:,}.")
+print(f"Total value of {transaction_type} type of transactions is ${total_value:,.2f}.")
 
 # Close database connection
 mydb.close()
@@ -131,7 +132,7 @@ if len(result) == 0:
     print(f"No transactions found for branches in {state}")
 else:
     table = PrettyTable()
-    table.field_names = ["Branch Code", "Transaction ID", "Transaction Value"]
+    table.field_names = ["Branch Code", "Transaction ID", "Transaction Value ($)"]
     # Iterate through the results to calculate the number and total value of transactions
     total_value = 0
     num_transactions = 0
@@ -145,9 +146,11 @@ else:
         # Add row to table
         table.add_row([branch_code, transaction_id, transaction_value])
 
-    print(f"Total Number of transactions in {state} state branches: {num_transactions:,}")
-    print(f"Total value of transactions in {state} state branches in USD: {total_value:,.2f}")
-    print(f"Here is the table of transactions in PA state branches: \n{table}")
+    # Display the results
+    print(table)
+    print(f"Table above is showing all transactions in {state} state branches.")
+    print(f"Total Number of transactions in {state} state branches is {num_transactions:,}.")
+    print(f"Total value of transactions in {state} state branches is ${total_value:,.2f}.")
 
 # Close database connection
 mydb.close()

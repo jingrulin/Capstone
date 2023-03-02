@@ -22,6 +22,8 @@ query = '''
 mycursor.execute(query)
 result = mycursor.fetchall()
 
+# Create a pandas DataFrame containing the filtered data
+self_employed_df = pd.DataFrame(result, columns=[desc[0] for desc in mycursor.description])
 
 # Calculate the percentage of applications approved for self-employed applicants
 approved_df = self_employed_df[self_employed_df['Application_Status'] == 'Y']
@@ -185,7 +187,7 @@ plt.xlabel("Branch Code")
 # Print the branch processed the highest total dollar value of healthcare transactions
 print("The branch processed the highest total dollar value of healthcare transactions is branch", end=" ")
 for index, row in df.iterrows():
-    print(f"{int(row['BRANCH_CODE'])} with a total healthcare transaction value of ${round(row['total_healthcare'], 2)}.")
+    print(f"{int(row['BRANCH_CODE'])} with a total healthcare transaction value of ${row['total_healthcare']:,.2f}.")
 
 plt.show()
 
