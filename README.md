@@ -32,13 +32,12 @@ Steps:
 
 4. Data transformation: The cleaned datasets will be transformed by applying data aggregation, joining, and filtering operations.
 
-5. Data loading: The transformed data will be loaded into a MariaDB database called “creditcard_capstone” using the Python MySQL Connector.
-   Tables names in RDBMS:
-        a. CDW_SAPP_BRANCH
-        b. CDW_SAPP_CREDIT_CARD
-        c. CDW_SAPP_CUSTOMER
-        d. CDW_SAPP_LOAN_APPLICATION
-        
+5. Data loading: The transformed data will be loaded into a MariaDB database called “creditcard_capstone” using the Python MySQL Connector. The following tables will be created in the database:
+   - `CDW_SAPP_BRANCH`
+   - `CDW_SAPP_CREDIT_CARD`
+   - `CDW_SAPP_CUSTOMER`
+   - `CDW_SAPP_LOAN_APPLICATION`
+
 6. Data analysis and visualization: The transformed data will be analyzed and visualized using Python Visualization and Analytics libraries with a front-end console-based Python program to see/display data. Basically it will for user inputs to call for the data anlysis.
 
 7. Deployment: The final ETL pipeline will be deployed on local machines and tested.
