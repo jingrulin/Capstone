@@ -17,12 +17,14 @@ Technologies:
 
 Steps:
 
-1. Data acquisition: The Credit Card datasets will be acquired as json files and Loan Application dataset will be aquired from API endpoint as json file as well.  
-   Please download all four files in json (API Endpoint dataset is determined to be loaned to database as downloaded json file due to technical difficulty):
-       * a. CDW_SAPP_CUSTOMER.JSON: This file has the existing customer details.
-       * b. CDW_SAPP_CREDITCARD.JSON: This file contains all credit card transaction information.
-       * c. CDW_SAPP_BRANCH.JSON: Each branch’s information and details are recorded in this file. 
-       * d. API Endpoint: https://raw.githubusercontent.com/platformps/LoanDataset/main/loan_data.json
+1. Data acquisition: The Credit Card datasets will be acquired as JSON files and the Loan Application dataset will be acquired from an API endpoint as a JSON file as well. Please download all four files in JSON format:
+
+   - `CDW_SAPP_CUSTOMER.JSON`: This file contains the existing customer details.
+   - `CDW_SAPP_CREDITCARD.JSON`: This file contains all credit card transaction information.
+   - `CDW_SAPP_BRANCH.JSON`: Each branch’s information and details are recorded in this file.
+   - API Endpoint: https://raw.githubusercontent.com/platformps/LoanDataset/main/loan_data.json
+
+   Note: the API endpoint dataset will be loaned to database as a downloaded JSON file due to technical difficulties.
 
 2. Data preprocessing: The Credit Card datasets will be preprocessed according to the Mapping document which is include in my repo.
 
