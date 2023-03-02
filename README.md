@@ -19,10 +19,10 @@ Steps:
 
 1. Data acquisition: The Credit Card datasets will be acquired as json files and Loan Application dataset will be aquired from API endpoint as json file as well.  
    Please download all four files in json (API Endpoint dataset is determined to be loaned to database as downloaded json file due to technical difficulty):
-    a. CDW_SAPP_CUSTOMER.JSON: This file has the existing customer details.
-    b. CDW_SAPP_CREDITCARD.JSON: This file contains all credit card transaction information.
-    c. CDW_SAPP_BRANCH.JSON: Each branch’s information and details are recorded in this file. 
-    d. API Endpoint: https://raw.githubusercontent.com/platformps/LoanDataset/main/loan_data.json
+       a. CDW_SAPP_CUSTOMER.JSON: This file has the existing customer details.
+       b. CDW_SAPP_CREDITCARD.JSON: This file contains all credit card transaction information.
+       c. CDW_SAPP_BRANCH.JSON: Each branch’s information and details are recorded in this file. 
+       d. API Endpoint: https://raw.githubusercontent.com/platformps/LoanDataset/main/loan_data.json
 
 2. Data preprocessing: The Credit Card datasets will be preprocessed according to the Mapping document which is include in my repo.
 
@@ -32,10 +32,10 @@ Steps:
 
 5. Data loading: The transformed data will be loaded into a MariaDB database called “creditcard_capstone” using the Python MySQL Connector.
    Tables names in RDBMS:
-    a. CDW_SAPP_BRANCH
-    b. CDW_SAPP_CREDIT_CARD
-    c. CDW_SAPP_CUSTOMER
-    d. CDW-SAPP_loan_application 
+        a. CDW_SAPP_BRANCH
+        b. CDW_SAPP_CREDIT_CARD
+        c. CDW_SAPP_CUSTOMER
+        d. CDW-SAPP_loan_application 
 
 6. Data analysis and visualization: The transformed data will be analyzed and visualized using Python Visualization and Analytics libraries with a front-end console-based Python program to see/display data. Basically it will for user inputs to call for the data anlysis.
 
